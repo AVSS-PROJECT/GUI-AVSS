@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection Web App</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #camera-feed {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #indicators {
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        .indicator-card {
+            margin-bottom: 20px;
+            animation: blinkAnimation 1s infinite; 
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .dim-light {
+            background-color: yellow;
+        }
+
+        .highlight {
+            background-color: #ff6600;
+        }
+
+        .pothole {
+            background-color: #cc0000;
+        }
+
+        @keyframes blinkAnimation {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="camera-feed">
+        <!-- <img src="https://images.pond5.com/dashcam-view-car-while-travelling-footage-092050803_iconl.jpeg" style="width: 100%;" alt="Camera Feed"> -->
+        <img src="{{ url_for('video_feed') }}" style="width: 100%;" alt="Camera Feed">
+    </div>
+
+    <div id="indicators">
+        <div class="indicator-card card dim-light">
+            <div class="card-body">
+                <h5 class="card-title">Dim Light</h5>
+                <p class="card-text">Status: <span id="dim-light-status">...</span></p>
+            </div>
+        </div>
+
+        <div class="indicator-card card highlight">
+            <div class="card-body">
+                <h5 class="card-title">Highlight</h5>
+                <p class="card-text">Status: <span id="highlight-status">...</span></p>
+            </div>
+        </div>
+
+        <div class="indicator-card card pothole">
+            <div class="card-body">
+                <h5 class="card-title">Pothole</h5>
+                <p class="card-text">Status: <span id="pothole-status">...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
